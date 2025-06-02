@@ -59,4 +59,12 @@ describe 'CardDeck' do
 
     expect(card).to eq deck2.cards[-1]
   end
+
+  it 'should shuffle the deck' do
+    stable_deck = CardDeck.new
+    shuffle_deck = CardDeck.new
+    expect(stable_deck).to eq shuffle_deck
+    shuffle_deck.shuffle
+    expect(stable_deck).to_not eq shuffle_deck
+  end
 end

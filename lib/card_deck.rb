@@ -6,10 +6,6 @@ class CardDeck
   def initialize
     @cards = []
 
-    # 52.times do
-    #   cards.push(PlayingCard.new('A', 'H'))
-    # end
-
     PlayingCard::SUIT.flat_map do |suit|
       PlayingCard::RANK.map do |rank|
         cards.push(PlayingCard.new(rank, suit))
@@ -23,5 +19,13 @@ class CardDeck
 
   def deal
     cards.pop
+  end
+
+  def shuffle
+    cards.shuffle!
+  end
+
+  def ==(other_deck)
+    cards == other_deck.cards
   end
 end
