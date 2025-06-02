@@ -14,7 +14,7 @@ class CardDeck
   end
 
   def cards_left
-    cards
+    cards.count
   end
 
   def deal

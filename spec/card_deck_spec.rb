@@ -24,14 +24,14 @@ describe 'CardDeck' do
   end
 
   it 'Should have 52 cards when created' do
-    expect(deck.cards_left.count).to eq 52
+    expect(deck.cards_left).to eq 52
   end
 
   it 'should remove a dealt card from the deck' do
     card = deck.deal
     expect(card).to_not be_nil
 
-    expect(deck.cards.count).to eq 51
+    expect(deck.cards_left).to eq 51
   end
 
   it 'should deal the top card from the deck' do
