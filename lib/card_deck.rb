@@ -7,15 +7,15 @@ class CardDeck
   def initialize
     @cards = []
     52.times do
-      @cards.push(PlayingCard.new('A', 'H'))
+      cards.push(PlayingCard.new('A', 'H'))
     end
   end
 
   def cards_left
-    @cards
+    cards
   end
 
   def deal
-    @cards.pop
+    cards.pop
   end
 end
