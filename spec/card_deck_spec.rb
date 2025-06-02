@@ -43,10 +43,20 @@ describe 'CardDeck' do
     expect(deck.cards_left.count).to eq 52
   end
 
-  it 'should deal the top card' do
+  it 'should remove a dealt card from the deck' do
     deck = CardDeck.new
     card = deck.deal
     expect(card).to_not be_nil
+
     expect(deck.cards.count).to eq 51
+  end
+
+  it 'should deal the top card from the deck' do
+    deck1 = CardDeck.new
+    deck2 = CardDeck.new
+
+    card = deck1.deal
+
+    expect(card).to eq deck2.cards[-1]
   end
 end
