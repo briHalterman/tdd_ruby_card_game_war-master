@@ -14,10 +14,9 @@ describe 'CardDeck' do
   it 'should include every suit' do
     deck = CardDeck.new
 
-    expect(deck.cards.map(&:suit)).to include('C')
-    expect(deck.cards.map(&:suit)).to include('D')
-    expect(deck.cards.map(&:suit)).to include('H')
-    expect(deck.cards.map(&:suit)).to include('S')
+    PlayingCard::SUIT.each do |suit|
+      expect(deck.cards.map(&:suit)).to include(suit)
+    end
   end
 
   it 'should include every rank' do
