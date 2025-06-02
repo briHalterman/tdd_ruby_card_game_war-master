@@ -11,13 +11,13 @@ describe 'PlayingCard' do
   it 'should be a valid suit' do
     expect{
       PlayingCard.new('A', 'X')
-    }.to raise_error
+    }.to raise_error StandardError
   end
 
   it 'should be a valid rank' do
     expect{
       PlayingCard.new('X', 'H')
-  }.to raise_error
+  }.to raise_error StandardError
   end
 
   it 'correctly compare two cards of the same rank and suit' do
