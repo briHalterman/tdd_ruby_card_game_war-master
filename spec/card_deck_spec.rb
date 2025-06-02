@@ -43,6 +43,12 @@ describe 'CardDeck' do
     expect(card).to eq deck2.cards[-1]
   end
 
+  it 'should deal a different card on each deal' do
+    card1 = deck.deal
+    card2 = deck.deal
+    expect(card1).to_not eq card2
+  end
+
   it 'should shuffle the deck' do
     stable_deck = CardDeck.new
     shuffle_deck = CardDeck.new
