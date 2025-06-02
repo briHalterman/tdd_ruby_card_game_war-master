@@ -7,4 +7,16 @@ describe 'PlayingCard' do
     expect(card.rank).to eq('A')
     expect(card.suit).to eq('H')
   end
+
+  it 'should be a valid suit' do
+    expect{
+      PlayingCard.new('A', 'X')
+    }.to raise_error
+  end
+
+  it 'should be a valid rank' do
+    expect{
+      PlayingCard.new('X', 'H')
+  }.to raise_error
+  end
 end
