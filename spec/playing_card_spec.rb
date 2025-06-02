@@ -19,4 +19,10 @@ describe 'PlayingCard' do
       PlayingCard.new('X', 'H')
   }.to raise_error
   end
+
+  it 'correctly compare two cards of the same rank and suit' do
+    card1 = PlayingCard.new('A', 'H')
+    card2 = PlayingCard.new('A', 'H')
+    expect(card1).to eq card2
+  end
 end
