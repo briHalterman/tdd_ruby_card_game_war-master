@@ -1,5 +1,5 @@
 require_relative '../lib/war_player'
-require_relative 'war_game_spec'
+require_relative '../lib/war_game'
 
 describe 'WarPlayer' do
   describe 'initialize' do

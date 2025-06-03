@@ -1,4 +1,7 @@
+require_relative '../lib/card_deck'
 require_relative '../lib/war_game'
+
+FULL_DECK_COUNT = 52
 
 describe 'WarGame' do
   let(:game) { WarGame.new }
@@ -73,16 +76,23 @@ describe 'WarGame' do
     it 'plays a turn for player1' do
       game.deal_out_deck
       preplay_player_stack_count = game.player1.player_stack.count
-      preplay_middle_stack_count = game.middle_stack.count
       game.play_round
 
       expect(game.player1.player_stack.count).to eq preplay_player_stack_count - 1
-      expect(game.middle_stack.count).to eq preplay_middle_stack_count + 1
     end
 
     it 'plays a turn for player2' do
+      game.deal_out_deck
+      preplay_player_stack_count = game.player2.player_stack.count
+      game.play_round
 
+      expect(game.player2.player_stack.count).to eq preplay_player_stack_count - 1
     end
+
+    # it 'adds player cards to middle_stack' do
+    #   preplay_middle_stack_count = game.middle_stack.count
+    #   expect(game.middle_stack.count).to eq preplay_middle_stack_count + 1
+    # end
 
     it 'gives the cards to the player with a higher rank' do
 

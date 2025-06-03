@@ -30,5 +30,6 @@ class WarGame
 
   def play_round
     play_turn(player1)
+    play_turn(player2)
   end
 end
