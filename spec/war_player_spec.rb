@@ -5,7 +5,7 @@ describe 'WarPlayer' do
     player = WarPlayer.new('PlayerX')
 
     puts @player
-    expect(player.player_name).to eq 'PlayerX'
+    expect(player.name).to eq 'PlayerX'
   end
 
   it 'initializes with an empty stack' do
