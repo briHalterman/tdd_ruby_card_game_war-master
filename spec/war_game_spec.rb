@@ -3,41 +3,68 @@ require_relative '../lib/war_game'
 describe 'WarGame' do
   let(:game) { WarGame.new }
 
-  it 'initializes a game with a deck' do
-    expect(game.deck).to respond_to :cards
+  describe 'initialize' do
+    it 'initializes a game with a deck' do
+      expect(game.deck).to respond_to :cards
+    end
+
+    it 'initializes a game with two players' do
+      expect(game.player1).to be_a WarPlayer
+      expect(game.player2).to be_a WarPlayer
+    end
+
+    it 'initializes with an empty middle stack' do
+      # expect(game.middle_stack).to be_empty
+    end
   end
 
-  it 'initializes a game with two players' do
-    expect(game.player1).to be_a WarPlayer
-    expect(game.player2).to be_a WarPlayer
+  describe 'deal_card' do
+    it 'deals a card to a player' do
+      game.deal_card(game.player1)
+
+      expect(game.player1.player_stack.count).to eq 1
+    end
   end
 
-  it 'deals a card to a player' do
-    game.deal_card(game.player1)
+  describe 'deal_out_deck' do
+    it 'deals out 26 cards to each players' do
+      game.deal_out_deck
 
-    expect(game.player1.player_stack.count).to eq 1
+      expect(game.player1.player_stack.count).to eq FULL_DECK_COUNT / 2
+      expect(game.player2.player_stack.count).to eq FULL_DECK_COUNT / 2
+    end
+
+    it 'deals the entire deck' do
+      game.deal_out_deck
+
+      expect(game.deck.cards.count).to eq 0
+    end
+
+    it 'alternates deals' do
+      predealt_deck = game.deck.cards.dup
+      game.deal_out_deck
+
+      expect(game.player1.player_stack[0]).to eq predealt_deck[-1]
+      expect(game.player2.player_stack[0]).to eq predealt_deck[-2]
+      expect(game.player1.player_stack[1]).to eq predealt_deck[-3]
+      expect(game.player2.player_stack[1]).to eq predealt_deck[-4]
+    end
   end
 
-  it 'deals out 26 cards to each players' do
-    game.deal_out_deck
+  describe 'play_round' do
+  it 'plays the top card from player1' do
 
-    expect(game.player1.player_stack.count).to eq 26
-    expect(game.player2.player_stack.count).to eq 26
   end
 
-  it 'deals the entire deck' do
-    game.deal_out_deck
+  it 'plays the top card from player2' do
 
-    expect(game.deck.cards.count).to eq 0
   end
 
-  it 'alternates deals' do
-    predealt_deck = game.deck.cards.dup
-    game.deal_out_deck
+  it 'gives the cards to the player with a higher rank'
 
-    expect(game.player1.player_stack[0]).to eq predealt_deck[-1]
-    expect(game.player2.player_stack[0]).to eq predealt_deck[-2]
-    expect(game.player1.player_stack[1]).to eq predealt_deck[-3]
-    expect(game.player2.player_stack[1]).to eq predealt_deck[-4]
+  end
+
+  it 'deals another card from each player in the case of a tie' do
+
   end
 end

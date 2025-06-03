@@ -13,4 +13,8 @@ describe 'WarPlayer' do
 
     expect(player.player_stack).to be_empty
   end
+
+  it 'starts the game by dealing cards' do
+    
+  end
 end
