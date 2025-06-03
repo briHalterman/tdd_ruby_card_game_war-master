@@ -24,6 +24,11 @@ class WarGame
   end
 
   def play_turn(player)
-    player.play_card
+    card = player.play_card
+    middle_stack.unshift(card)
+  end
+
+  def play_round
+    play_turn(player1)
   end
 end
