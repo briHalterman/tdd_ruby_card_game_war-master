@@ -29,13 +29,17 @@ describe 'WarPlayer' do
       expect(game.player1.player_stack.count).to eq stack_count - 1
     end
 
-    # it 'should deal the top card from the deck' do
-    #   deck1 = CardDeck.new
-    #   deck2 = CardDeck.new
+    it 'should deal the top card from the deck' do
+      game = WarGame.new
+      game.deal_out_deck
+      preplay_stack = game.player1.player_stack.dup
+      # puts preplay_stack
+      card = game.player1.play_card
+      puts preplay_stack.count
+      puts preplay_stack
+      puts card
 
-    #   card = deck1.deal
-
-    #   expect(card).to eq deck2.cards[-1]
-    # end
+      expect(card).to eq preplay_stack[-1]
+    end
   end
 end
