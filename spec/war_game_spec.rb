@@ -24,4 +24,10 @@ describe 'WarGame' do
     expect(game.player1.player_stack.count).to eq 26
     expect(game.player2.player_stack.count).to eq 26
   end
+
+  it 'deals the entire deck' do
+    game.deal_out_deck
+
+    expect(game.deck.cards.count).to eq 0
+  end
 end
