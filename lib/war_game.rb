@@ -7,6 +7,12 @@ class WarGame
     @deck = CardDeck.new
   end
 
+  def deal_out_deck
+    26.times do
+      player1.player_stack.push(deck.deal)
+      player2.player_stack.push(deck.deal)
+    end
+  end
 
   def deal_card(player)
     player.player_stack.push(deck.deal)

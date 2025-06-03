@@ -17,4 +17,11 @@ describe 'WarGame' do
 
     expect(game.player1.player_stack.count).to eq 1
   end
+
+  it 'deals out 26 cards to each players' do
+    game.deal_out_deck
+
+    expect(game.player1.player_stack.count).to eq 26
+    expect(game.player2.player_stack.count).to eq 26
+  end
 end
