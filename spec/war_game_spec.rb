@@ -14,7 +14,7 @@ describe 'WarGame' do
     end
 
     it 'initializes with an empty middle stack' do
-      # expect(game.middle_stack).to be_empty
+      expect(game.middle_stack).to be_empty
     end
   end
 
