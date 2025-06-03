@@ -1,3 +1,5 @@
+require_relative 'card_deck'
+
 class WarGame
   attr_accessor :player1, :player2, :deck
 
@@ -7,14 +9,14 @@ class WarGame
     @deck = CardDeck.new
   end
 
-  def deal_out_deck
-    26.times do
-      player1.player_stack.push(deck.deal)
-      player2.player_stack.push(deck.deal)
-    end
-  end
-
   def deal_card(player)
     player.player_stack.push(deck.deal)
+  end
+
+  def deal_out_deck
+    while deck.cards.count > 0 do
+      deal_card(player1)
+      deal_card(player2)
+    end
   end
 end
