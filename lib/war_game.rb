@@ -7,4 +7,8 @@ class WarGame
     @deck = CardDeck.new
   end
 
+
+  def deal_card(player)
+    player.player_stack.push(deck.deal)
+  end
 end
