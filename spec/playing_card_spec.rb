@@ -20,7 +20,7 @@ describe 'PlayingCard' do
   }.to raise_error StandardError
   end
 
-  it 'correctly compare two cards of the same rank and suit' do
+  it 'should correctly compare two cards of the same rank and suit' do
     card1 = PlayingCard.new('A', 'H')
     card2 = PlayingCard.new('A', 'H')
     expect(card1).to eq card2

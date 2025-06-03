@@ -97,7 +97,12 @@ describe 'WarGame' do
       expect(game.middle_stack.count).to eq preplay_middle_stack_count + 2
     end
 
+    it 'compares the ranks of the cards played' do
+      
+    end
+
     it 'gives the cards to the player with a higher rank' do
+
 
     end
 

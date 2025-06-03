@@ -4,11 +4,13 @@ class CardDeck
   attr_accessor :cards, :cards_left
 
   def initialize
-    @cards = []
+    @cards = build_deck
+  end
 
+  def build_deck
     PlayingCard::SUIT.flat_map do |suit|
       PlayingCard::RANK.map do |rank|
-        cards.push(PlayingCard.new(rank, suit))
+        PlayingCard.new(rank, suit)
       end
     end
   end
