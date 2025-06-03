@@ -51,20 +51,34 @@ describe 'WarGame' do
     end
   end
 
-  describe 'play_round' do
-  it 'plays a card from player1' do
+  describe 'play_turn' do
+    it 'plays a card from a player\'s stack' do
+      game.deal_out_deck
+      preplay_stack_count = game.player1.player_stack.count
+      game.play_turn(game.player1)
 
+      expect(game.player1.player_stack.count).to eq preplay_stack_count - 1
+    end
+
+    it 'adds the played card to the middle stack' do
+    end
   end
 
-  it 'plays a card from player2' do
+  # describe 'play_round' do
+  #   it 'plays a card from player1' do
 
-  end
+  #   end
 
-  it 'gives the cards to the player with a higher rank'
+  #   it 'plays a card from player2' do
 
-  end
+  #   end
 
-  it 'deals another card from each player in the case of a tie' do
+  #   it 'gives the cards to the player with a higher rank'
 
-  end
+  #   end
+
+  #   it 'deals another card from each player in the case of a tie' do
+
+  #   end
+  # end
 end

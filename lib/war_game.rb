@@ -22,4 +22,8 @@ class WarGame
       deal_card(player2)
     end
   end
+
+  def play_turn(player)
+    player.play_card
+  end
 end
