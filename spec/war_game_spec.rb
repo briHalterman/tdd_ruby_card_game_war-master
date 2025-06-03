@@ -52,11 +52,11 @@ describe 'WarGame' do
   end
 
   describe 'play_round' do
-  it 'plays the top card from player1' do
+  it 'plays a card from player1' do
 
   end
 
-  it 'plays the top card from player2' do
+  it 'plays a card from player2' do
 
   end
 

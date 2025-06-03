@@ -1,7 +1,9 @@
 require_relative 'card_deck'
+require_relative 'playing_card'
+require_relative 'war_player'
 
 class WarGame
-  attr_accessor :player1, :player2, :deck, :middle_stack
+  attr_accessor :player1, :player2, :deck, :middle_stack, :deal, :cards
 
   def initialize
     @player1 = WarPlayer.new('Player1')
