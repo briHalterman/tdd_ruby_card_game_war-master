@@ -30,4 +30,14 @@ describe 'WarGame' do
 
     expect(game.deck.cards.count).to eq 0
   end
+
+  it 'alternates deals' do
+    predealt_deck = game.deck.cards.dup
+    game.deal_out_deck
+
+    expect(game.player1.player_stack[0]).to eq predealt_deck[-1]
+    expect(game.player2.player_stack[0]).to eq predealt_deck[-2]
+    expect(game.player1.player_stack[1]).to eq predealt_deck[-3]
+    expect(game.player2.player_stack[1]).to eq predealt_deck[-4]
+  end
 end
