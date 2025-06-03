@@ -89,10 +89,13 @@ describe 'WarGame' do
       expect(game.player2.player_stack.count).to eq preplay_player_stack_count - 1
     end
 
-    # it 'adds player cards to middle_stack' do
-    #   preplay_middle_stack_count = game.middle_stack.count
-    #   expect(game.middle_stack.count).to eq preplay_middle_stack_count + 1
-    # end
+    it 'adds player cards to middle_stack' do
+      game.deal_out_deck
+      preplay_middle_stack_count = game.middle_stack.count
+      game.play_round
+
+      expect(game.middle_stack.count).to eq preplay_middle_stack_count + 2
+    end
 
     it 'gives the cards to the player with a higher rank' do
 
