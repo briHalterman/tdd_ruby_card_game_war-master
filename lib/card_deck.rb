@@ -23,7 +23,7 @@ class CardDeck
     cards.pop
   end
 
-  def shuffle
+  def shuffle!
     cards.shuffle!
   end
 

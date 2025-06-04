@@ -60,7 +60,7 @@ describe 'CardDeck' do
       stable_deck = CardDeck.new
       shuffle_deck = CardDeck.new
       expect(stable_deck).to eq shuffle_deck
-      shuffle_deck.shuffle
+      shuffle_deck.shuffle!
       expect(stable_deck).to_not eq shuffle_deck
     end
   end
