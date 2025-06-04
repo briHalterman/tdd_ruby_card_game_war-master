@@ -113,9 +113,9 @@ describe 'WarGame' do
     #   expect(game.middle_stack.count).to eq preplay_middle_stack_count + 2
     # end
 
-    it 'deals another card from each player in the case of a tie'
+    it 'shuffles the middle stack before giving it to a player' do
 
-    it 'shuffles the middle stack'
+    end
 
     it 'adds the middle stack to the stack of the player who laid the higher value suit' do
       game.player1.player_stack = [PlayingCard.new('A', 'H')]
