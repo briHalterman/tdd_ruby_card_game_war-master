@@ -39,6 +39,6 @@ class WarGame
       # give stack to player1
     # if player2 played higher value card
       # give stack to player2
-    # 
+    #
   end
 end

@@ -11,7 +11,7 @@ class WarSocketServer
   end
 
   def games
-    games ||= []
+    @games ||= []
   end
 
   def players
@@ -23,6 +23,7 @@ class WarSocketServer
   end
 
   def accept_new_client(player_name = "Random Player")
+    # sleep(0.1)
     client = @server.accept_nonblock
     player = WarPlayer.new(player_name)
     players.push player
