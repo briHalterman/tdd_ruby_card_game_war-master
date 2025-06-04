@@ -21,6 +21,18 @@ describe 'WarGame' do
     end
   end
 
+  describe 'start' do
+    it 'shuffles the deck' do
+      preshuffled_deck = CardDeck.new.dup
+      expect(game.deck).to eq preshuffled_deck
+
+      game.start
+      expect(game.deck).to_not eq preshuffled_deck
+    end
+
+    it 'deals out the deck to players'
+  end
+
   describe 'deal_card' do
     it 'deals a card to a player' do
       game.deal_card(game.player1)
@@ -97,12 +109,10 @@ describe 'WarGame' do
       expect(game.middle_stack.count).to eq preplay_middle_stack_count + 2
     end
 
-    it 'gives the cards to the player with a higher rank' do
+    it 'gives the cards to the player with a higher rank'
 
-    end
+    it 'deals another card from each player in the case of a tie'
 
-    it 'deals another card from each player in the case of a tie' do
 
-    end
   end
 end

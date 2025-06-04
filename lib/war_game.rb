@@ -12,6 +12,10 @@ class WarGame
     @middle_stack = []
   end
 
+  def start
+    deck.shuffle!
+  end
+
   def deal_card(player)
     player.player_stack.push(deck.deal)
   end
