@@ -14,6 +14,7 @@ class WarGame
 
   def start
     deck.shuffle!
+    deal_out_deck
   end
 
   def deal_card(player)

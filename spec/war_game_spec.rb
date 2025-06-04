@@ -30,7 +30,13 @@ describe 'WarGame' do
       expect(game.deck).to_not eq preshuffled_deck
     end
 
-    it 'deals out the deck to players'
+    it 'deals out the deck to players' do
+      game.start
+
+      expect(game.deck.cards).to be_empty
+      expect(game.player1.player_stack.count).to eq FULL_DECK_COUNT / 2
+      expect(game.player2.player_stack.count).to eq FULL_DECK_COUNT / 2
+    end
   end
 
   describe 'deal_card' do
