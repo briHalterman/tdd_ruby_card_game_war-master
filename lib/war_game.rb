@@ -41,13 +41,9 @@ class WarGame
     player2_card = play_turn(player2)
 
     if player1_card.value > player2_card.value
-      # player1.take_stack(middle_stack)
-      player1.player_stack.unshift(*middle_stack)
-      middle_stack.clear
+      player1.take_stack(middle_stack)
     elsif player2_card.value > player1_card.value
-      # player2.take_stack(middle_stack)
-      player2.player_stack.unshift(*middle_stack)
-      middle_stack.clear
+      player2.take_stack(middle_stack)
     else
       #handle tie
     end
