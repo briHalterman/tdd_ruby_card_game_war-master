@@ -105,19 +105,19 @@ describe 'WarGame' do
       expect(game.player2.player_stack.count).to_not eq preplay_player_stack_count
     end
 
-    it 'adds player cards to middle_stack' do
-      game.deal_out_deck
-      preplay_middle_stack_count = game.middle_stack.count
-      game.play_round
+    # it 'adds player cards to middle_stack' do
+    #   game.deal_out_deck
+    #   preplay_middle_stack_count = game.middle_stack.count
+    #   game.play_round
 
-      expect(game.middle_stack.count).to eq preplay_middle_stack_count + 2
-    end
+    #   expect(game.middle_stack.count).to eq preplay_middle_stack_count + 2
+    # end
 
     it 'deals another card from each player in the case of a tie'
 
     it 'shuffles the middle stack'
 
-    it 'gives the cards to the player with a higher rank' do
+    it 'adds the middle stack to the stack of the player who laid the higher value suit' do
       game.player1.player_stack = [PlayingCard.new('A', 'H')]
       game.player2.player_stack = [PlayingCard.new('K', 'H')]
       game.play_round
@@ -126,13 +126,21 @@ describe 'WarGame' do
       expect(game.player2.player_stack.count).to eq 0
     end
 
-    it 'gives the cards to the player with a higher rank' do
+    it 'adds the middle stack to the stack of the player who laid the higher value suit' do
       game.player1.player_stack = [PlayingCard.new('2', 'H')]
       game.player2.player_stack = [PlayingCard.new('J', 'H')]
       game.play_round
 
       expect(game.player1.player_stack.count).to eq 0
       expect(game.player2.player_stack.count).to eq 2
+    end
+
+    it 'clears the middle stack after adding it to player\'s stack' do
+      game.player1.player_stack = [PlayingCard.new('A', 'H')]
+      game.player2.player_stack = [PlayingCard.new('K', 'H')]
+      game.play_round
+
+      expect(game.middle_stack.count).to eq 0
     end
   end
 end

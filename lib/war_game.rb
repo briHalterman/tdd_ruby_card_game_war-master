@@ -42,11 +42,12 @@ class WarGame
 
     if player1_card.value > player2_card.value
       player1.player_stack.unshift(*middle_stack)
+      middle_stack.clear
     elsif player2_card.value > player1_card.value
       player2.player_stack.unshift(*middle_stack)
+      middle_stack.clear
     end
 
-    # middle_stack.clear
   end
 
 
