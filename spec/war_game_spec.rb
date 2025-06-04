@@ -1,8 +1,6 @@
 require_relative '../lib/card_deck'
 require_relative '../lib/war_game'
 
-FULL_DECK_COUNT = 52
-
 describe 'WarGame' do
   let(:game) { WarGame.new }
 
@@ -34,8 +32,8 @@ describe 'WarGame' do
       game.start
 
       expect(game.deck.cards).to be_empty
-      expect(game.player1.player_stack.count).to eq FULL_DECK_COUNT / 2
-      expect(game.player2.player_stack.count).to eq FULL_DECK_COUNT / 2
+      expect(game.player1.player_stack.count).to eq CardDeck::FULL_DECK_COUNT / 2
+      expect(game.player2.player_stack.count).to eq CardDeck::FULL_DECK_COUNT / 2
     end
   end
 
@@ -51,8 +49,8 @@ describe 'WarGame' do
     it 'deals out 26 cards to each players' do
       game.deal_out_deck
 
-      expect(game.player1.player_stack.count).to eq FULL_DECK_COUNT / 2
-      expect(game.player2.player_stack.count).to eq FULL_DECK_COUNT / 2
+      expect(game.player1.player_stack.count).to eq CardDeck::FULL_DECK_COUNT / 2
+      expect(game.player2.player_stack.count).to eq CardDeck::FULL_DECK_COUNT / 2
     end
 
     it 'deals the entire deck' do

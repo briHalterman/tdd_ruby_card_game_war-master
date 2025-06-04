@@ -3,15 +3,15 @@ require_relative '../lib/card_deck'
 describe 'CardDeck' do
   let(:deck) { CardDeck.new }
 
-  FULL_DECK_COUNT = 52
+  # FULL_DECK_COUNT = 52
 
   describe 'initialize' do
-    it 'should initialize with 52 cards' do
-      expect(deck.cards.count).to eq FULL_DECK_COUNT
+    it 'should initialize with a full deck of cards' do
+      expect(deck.cards.count).to eq CardDeck::FULL_DECK_COUNT
     end
 
     it 'should initialize with unique cards' do
-      expect(deck.cards.uniq(&:to_s).count).to eq FULL_DECK_COUNT
+      expect(deck.cards.uniq(&:to_s).count).to eq CardDeck::FULL_DECK_COUNT
     end
 
     it 'should include every suit' do
@@ -27,16 +27,16 @@ describe 'CardDeck' do
     end
 
     it 'Should have 52 cards when created' do
-      expect(deck.cards_left).to eq FULL_DECK_COUNT
+      expect(deck.cards_left).to eq CardDeck::FULL_DECK_COUNT
     end
   end
 
   describe 'deal' do
-    it 'should remove a dealt card from the deck' do
+    it 'should remove one dealt card from the deck' do
       card = deck.deal
       expect(card).to_not be_nil
 
-      expect(deck.cards_left).to eq FULL_DECK_COUNT - 1
+      expect(deck.cards_left).to eq CardDeck::FULL_DECK_COUNT - 1
     end
 
     it 'should deal the top card from the deck' do

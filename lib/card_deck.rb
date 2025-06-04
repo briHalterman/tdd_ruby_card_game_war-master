@@ -3,6 +3,8 @@ require_relative 'playing_card'
 class CardDeck
   attr_accessor :cards, :cards_left
 
+  FULL_DECK_COUNT = 52
+
   def initialize
     @cards = build_deck
   end
