@@ -59,6 +59,15 @@ describe WarSocketServer do
     expect(@server.games.count).to be 1
   end
 
+  it 'welcomes a client when they are accepted' do
+    client1 = MockWarSocketClient.new(@server.port_number)
+    @clients.push(client1)
+    @server.accept_new_client("Player 1")
+    @server.create_game_if_possible
+
+    expect(client1.capture_output).to match /welcome/i
+  end
+
   # Add more tests to make sure the game is being played
   # For example:
   #   make sure the mock client gets appropriate output
