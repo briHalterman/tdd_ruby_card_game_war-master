@@ -31,5 +31,14 @@ class WarGame
   def play_round
     play_turn(player1)
     play_turn(player2)
+
+    # compare card values
+    # if cards have same value
+      # start round over to play turn for each play
+    # if player1 played higher value card
+      # give stack to player1
+    # if player2 played higher value card
+      # give stack to player2
+    # 
   end
 end

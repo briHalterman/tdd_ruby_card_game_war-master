@@ -20,6 +20,10 @@ describe 'PlayingCard' do
   }.to raise_error StandardError
   end
 
+  it 'should assign the correct value to a card\'s suit' do
+    
+  end
+
   it 'should correctly compare two cards of the same rank and suit' do
     card1 = PlayingCard.new('A', 'H')
     card2 = PlayingCard.new('A', 'H')

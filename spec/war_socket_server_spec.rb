@@ -51,6 +51,7 @@ describe WarSocketServer do
     @server.accept_new_client("Player 1")
     @server.create_game_if_possible
     expect(@server.games.count).to be 0
+    
     client2 = MockWarSocketClient.new(@server.port_number)
     @clients.push(client2)
     @server.accept_new_client("Player 2")

@@ -3,6 +3,7 @@ class PlayingCard
 
   SUIT = ['C', 'D', 'H', 'S']
   RANK = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+  # VALUE = []
 
   def initialize(rank, suit)
     unless SUIT.include? suit
