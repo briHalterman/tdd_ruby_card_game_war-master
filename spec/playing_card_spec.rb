@@ -21,7 +21,9 @@ describe 'PlayingCard' do
   end
 
   it 'should assign the correct value to a card\'s suit' do
-    
+    card = PlayingCard.new('A', 'H')
+
+    expect(card.value).to eq 12
   end
 
   it 'should correctly compare two cards of the same rank and suit' do
