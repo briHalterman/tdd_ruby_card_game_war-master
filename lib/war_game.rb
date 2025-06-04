@@ -3,7 +3,9 @@ require_relative 'playing_card'
 require_relative 'war_player'
 
 class WarGame
-  attr_accessor :player1, :player2, :deck, :middle_stack, :deal, :cards
+  attr_accessor :player1, :player2, :deck, :middle_stack, :deal, :cards, :round_winner
+
+  FULL_DECK_COUNT = 52
 
   def initialize
     @player1 = WarPlayer.new('Player1')
@@ -31,19 +33,21 @@ class WarGame
   def play_turn(player)
     card = player.play_card
     middle_stack.unshift(card)
+    card
   end
 
   def play_round
-    play_turn(player1)
-    play_turn(player2)
+    player1_card = play_turn(player1)
+    player2_card = play_turn(player2)
 
-    # compare card values
-    # if cards have same value
-      # start round over to play turn for each play
-    # if player1 played higher value card
-      # give stack to player1
-    # if player2 played higher value card
-      # give stack to player2
-    #
+    if player1_card.value > player2_card.value
+      player1.player_stack.unshift(*middle_stack)
+    elsif player2_card.value > player1_card.value
+      player2.player_stack.unshift(*middle_stack)
+    end
+
+    # middle_stack.clear
   end
+
+
 end
