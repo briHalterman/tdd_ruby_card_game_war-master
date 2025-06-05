@@ -88,6 +88,19 @@ describe 'WarGame' do
     end
   end
 
+  describe 'award_stack' do
+    it 'should give the middle stack to the round winner' do
+      game.player1_card = PlayingCard.new('A', 'H')
+      game.player2_card = PlayingCard.new('K', 'H')
+      game.middle_stack = [game.player1_card, game.player2_card]
+      # binding.irb
+      game.award_stack(game.player1_card, game.player2_card)
+
+      expect(game.player1.player_stack.count).to eq 2
+      expect(game.player2.player_stack.count).to eq 0
+    end
+  end
+
   describe 'play_round' do
     it 'plays a turn for player1' do
       game.deal_out_deck

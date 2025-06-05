@@ -3,7 +3,7 @@ require_relative 'playing_card'
 require_relative 'war_player'
 
 class WarGame
-  attr_accessor :player1, :player2, :deck, :middle_stack, :deal, :cards, :round_winner
+  attr_accessor :player1, :player2, :deck, :middle_stack, :deal, :cards, :round_winner, :player1_card, :player2_card
 
   FULL_DECK_COUNT = 52
 
@@ -12,6 +12,8 @@ class WarGame
     @player2 = WarPlayer.new('Player2')
     @deck = CardDeck.new
     @middle_stack = []
+    # @player1_card
+    # @player2_card
   end
 
   def start
@@ -36,10 +38,7 @@ class WarGame
     card
   end
 
-  def play_round
-    player1_card = play_turn(player1)
-    player2_card = play_turn(player2)
-
+  def award_stack(player1_card, player2_card)
     if player1_card.value > player2_card.value
       player1.take_stack(middle_stack)
     elsif player2_card.value > player1_card.value
@@ -47,5 +46,12 @@ class WarGame
     else
       #handle tie
     end
+  end
+
+  def play_round
+    player1_card = play_turn(player1)
+    player2_card = play_turn(player2)
+
+    award_stack(player1_card, player2_card)
   end
 end
