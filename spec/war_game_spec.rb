@@ -5,22 +5,22 @@ describe 'WarGame' do
   let(:game) { WarGame.new }
 
   describe 'initialize' do
-    it 'initializes a game with a deck' do
+    it 'should initialize a game with a deck' do
       expect(game.deck).to respond_to :cards
     end
 
-    it 'initializes a game with two players' do
+    it 'should initialize a game with two players' do
       expect(game.player1).to be_a WarPlayer
       expect(game.player2).to be_a WarPlayer
     end
 
-    it 'initializes with an empty middle stack' do
+    it 'should initialize with an empty middle stack' do
       expect(game.middle_stack).to be_empty
     end
   end
 
   describe 'start' do
-    it 'shuffles the deck' do
+    it 'should shuffle the deck' do
       preshuffled_deck = CardDeck.new.dup
       expect(game.deck).to eq preshuffled_deck
 
@@ -28,7 +28,7 @@ describe 'WarGame' do
       expect(game.deck).to_not eq preshuffled_deck
     end
 
-    it 'deals out the deck to players' do
+    it 'should deal out the deck to players' do
       game.start
 
       expect(game.deck.cards).to be_empty
@@ -38,7 +38,7 @@ describe 'WarGame' do
   end
 
   describe 'deal_card' do
-    it 'deals a card to a player' do
+    it 'should deal a card to a player' do
       game.deal_card(game.player1)
 
       expect(game.player1.player_stack.count).to eq 1
@@ -46,20 +46,20 @@ describe 'WarGame' do
   end
 
   describe 'deal_out_deck' do
-    it 'deals out 26 cards to each players' do
+    it 'should deal out 26 cards to each players' do
       game.deal_out_deck
 
       expect(game.player1.player_stack.count).to eq CardDeck::FULL_DECK_COUNT / 2
       expect(game.player2.player_stack.count).to eq CardDeck::FULL_DECK_COUNT / 2
     end
 
-    it 'deals the entire deck' do
+    it 'should deal the entire deck' do
       game.deal_out_deck
 
       expect(game.deck.cards.count).to eq 0
     end
 
-    it 'alternates deals' do
+    it 'should alternate deals' do
       predealt_deck = game.deck.cards.dup
       game.deal_out_deck
 
@@ -70,8 +70,14 @@ describe 'WarGame' do
     end
   end
 
+  describe 'winner' do
+    it 'should identify if a player is out of cards'
+
+    it 'should assign the player who is not out of cards as the winner'
+  end
+
   describe 'play_turn' do
-    it 'plays a card from a player\'s stack' do
+    it 'should play a card from a player\'s stack' do
       game.deal_out_deck
       preplay_player_stack_count = game.player1.player_stack.count
       game.play_turn(game.player1)
@@ -79,7 +85,7 @@ describe 'WarGame' do
       expect(game.player1.player_stack.count).to eq preplay_player_stack_count - 1
     end
 
-    it 'adds the played card to the middle stack' do
+    it 'should add the played card to the middle stack' do
       game.deal_out_deck
       preplay_middle_stack_count = game.middle_stack.count
       game.play_turn(game.player1)
@@ -88,12 +94,22 @@ describe 'WarGame' do
     end
   end
 
+  describe 'shuffle_middle_stack' do
+    it 'should shuffle the middle stack' do
+      unshuffled_stack = [PlayingCard.new('A', 'H'), PlayingCard.new('2', 'S'), PlayingCard.new('4', 'C')]
+      game.middle_stack = [PlayingCard.new('A', 'H'), PlayingCard.new('2', 'S'), PlayingCard.new('4', 'C')]
+      # shuffle_stack = game.middle_stack.dup
+      expect(game.middle_stack).to eq unshuffled_stack
+      game.shuffle_middle_stack!
+      expect(game.middle_stack).to_not eq unshuffled_stack
+    end
+  end
+
   describe 'award_stack' do
     it 'should give the middle stack to the round winner' do
       game.player1_card = PlayingCard.new('A', 'H')
       game.player2_card = PlayingCard.new('K', 'H')
       game.middle_stack = [game.player1_card, game.player2_card]
-      # binding.irb
       game.award_stack(game.player1_card, game.player2_card)
 
       expect(game.player1.player_stack.count).to eq 2
@@ -102,6 +118,8 @@ describe 'WarGame' do
   end
 
   describe 'play_round' do
+    it 'should only runner if there is no winner'
+
     it 'plays a turn for player1' do
       game.deal_out_deck
       preplay_player_stack_count = game.player1.player_stack.count
@@ -118,19 +136,19 @@ describe 'WarGame' do
       expect(game.player2.player_stack.count).to_not eq preplay_player_stack_count
     end
 
-    # it 'adds player cards to middle_stack' do
-    #   game.deal_out_deck
-    #   preplay_middle_stack_count = game.middle_stack.count
-    #   game.play_round
+    it 'adds player cards to middle_stack' do
+      game.deal_out_deck
+      preplay_middle_stack_count = game.middle_stack.count
+      game.play_round
 
-    #   expect(game.middle_stack.count).to eq preplay_middle_stack_count + 2
-    # end
+      expect(game.middle_stack.count).to eq preplay_middle_stack_count + 2
+    end
 
-    it 'shuffles the middle stack before giving it to a player' do
+    it 'should shuffle the middle stack before giving it to a player' do
 
     end
 
-    it 'adds the middle stack to the stack of the player who laid the higher value suit' do
+    it 'should add the middle stack to the stack of the player who laid the higher value suit' do
       game.player1.player_stack = [PlayingCard.new('A', 'H')]
       game.player2.player_stack = [PlayingCard.new('K', 'H')]
       game.play_round
@@ -139,7 +157,7 @@ describe 'WarGame' do
       expect(game.player2.player_stack.count).to eq 0
     end
 
-    it 'adds the middle stack to the stack of the player who laid the higher value suit' do
+    it 'should add the middle stack to the stack of the player who laid the higher value suit' do
       game.player1.player_stack = [PlayingCard.new('2', 'H')]
       game.player2.player_stack = [PlayingCard.new('J', 'H')]
       game.play_round
@@ -148,7 +166,7 @@ describe 'WarGame' do
       expect(game.player2.player_stack.count).to eq 2
     end
 
-    it 'clears the middle stack after adding it to player\'s stack' do
+    it 'should clear the middle stack after adding it to player\'s stack' do
       game.player1.player_stack = [PlayingCard.new('A', 'H')]
       game.player2.player_stack = [PlayingCard.new('K', 'H')]
       game.play_round

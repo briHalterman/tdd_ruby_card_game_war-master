@@ -12,8 +12,6 @@ class WarGame
     @player2 = WarPlayer.new('Player2')
     @deck = CardDeck.new
     @middle_stack = []
-    # @player1_card
-    # @player2_card
   end
 
   def start
@@ -38,6 +36,10 @@ class WarGame
     card
   end
 
+  def shuffle_middle_stack!
+    middle_stack.shuffle!
+  end
+
   def award_stack(player1_card, player2_card)
     if player1_card.value > player2_card.value
       player1.take_stack(middle_stack)
@@ -54,4 +56,9 @@ class WarGame
 
     award_stack(player1_card, player2_card)
   end
+
+  def ==(other_stack)
+    middle_stack == other_stack.middle_stack
+  end
 end
+

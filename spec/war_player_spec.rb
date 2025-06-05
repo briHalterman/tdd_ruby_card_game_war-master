@@ -41,7 +41,7 @@ describe 'WarPlayer' do
   end
 
   describe 'take_stack' do
-    it 'add the cards from the middle stack to the player' do
+    it 'should add the cards from the middle stack to the player' do
       game = WarGame.new
       game.middle_stack = [PlayingCard.new('A', 'H'), PlayingCard.new('10', 'C')]
       game.player1.player_stack = []
