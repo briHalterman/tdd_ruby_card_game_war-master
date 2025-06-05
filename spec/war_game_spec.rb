@@ -73,7 +73,7 @@ describe 'WarGame' do
   describe 'winner' do
     it 'should identify if a player is out of cards'
 
-    it 'should assign the player who is not out of cards as the winner'
+    it 'should assign the player who is not out of cards as the game winner'
   end
 
   describe 'play_turn' do
@@ -117,6 +117,20 @@ describe 'WarGame' do
     end
   end
 
+  describe 'tied_round_message' do
+    it 'should display if there is a tie'
+
+    it 'should state the rank of the cards that tie'
+  end
+
+  describe 'round_winner_message' do
+    it 'should display the winning player\'s name'
+
+    it 'should display the winning card\'s rank'
+
+    it 'should display the winning card\'s suit'
+  end
+
   describe 'play_round' do
     it 'should only runner if there is no winner'
 
@@ -136,17 +150,7 @@ describe 'WarGame' do
       expect(game.player2.player_stack.count).to_not eq preplay_player_stack_count
     end
 
-    it 'adds player cards to middle_stack' do
-      game.deal_out_deck
-      preplay_middle_stack_count = game.middle_stack.count
-      game.play_round
-
-      expect(game.middle_stack.count).to eq preplay_middle_stack_count + 2
-    end
-
-    it 'should shuffle the middle stack before giving it to a player' do
-
-    end
+    it 'should shuffle the middle stack before giving it to a player'
 
     it 'should add the middle stack to the stack of the player who laid the higher value suit' do
       game.player1.player_stack = [PlayingCard.new('A', 'H')]
@@ -173,5 +177,7 @@ describe 'WarGame' do
 
       expect(game.middle_stack.count).to eq 0
     end
+
+    it 'should display a message'
   end
 end

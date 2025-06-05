@@ -69,26 +69,26 @@ describe WarSocketServer do
 
   it 'should prompt player to choose a name'
 
-  it 'should start the game' do
-
-  end
-
   it 'should announce the start of the game to each client' do
     client1 = MockWarSocketClient.new(@server.port_number)
     @clients.push(client1)
     @server.accept_new_client("Player 1")
-    @server.create_game_if_possible
+    client1.capture_output
 
     client2 = MockWarSocketClient.new(@server.port_number)
     @clients.push(client2)
     @server.accept_new_client("Player 2")
-    @server.create_game_if_possible
+    client2.capture_output
 
+    @server.create_game_if_possible
+    
     expect(client1.capture_output).to match /start/i
-    # expect(client2.capture_output).to match /start/i
+    expect(client2.capture_output).to match /start/i
   end
 
-  it 'should ask a client if they are ready to play card'
+  it 'should ask a client if they are ready to play card' do
+
+  end
 
   it 'should receive client response to if they are ready to play card'
 
